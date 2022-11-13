@@ -1,23 +1,12 @@
-const express = require('express')
-const router = express()
-const {create} = require('./controler')
+const express = require("express");
+const router = express();
+const { create, index, find, update, destroy } = require("./controler");
 
-router.get('/categories', (req, res) => {
-     const data = [
-        { 
-           id: 1,
-           name : "seminar" 
-        },
-        {
-            id : 2,
-            name : "bootcamp"
-        }
-    ]
-    res.status(200).json({
-       data
-    })
-})
+router.get("/categories", index);
+router.get("/categories/:id", find);
+router.put("/categories/:id", update);
+router.delete("/categories/:id", destroy);
 
-router.post('/categories', create)
+router.post("/categories", create);
 
-module.exports = router
+module.exports = router;
